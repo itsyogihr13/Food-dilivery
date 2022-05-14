@@ -8,6 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Table from "react-bootstrap/esm/Table";
+import axios from "axios";
 import { DLT } from "../redux/actions/action";
 
 const Header = () => {
@@ -33,7 +34,7 @@ const Header = () => {
   };
 
   const total = () => {
-    let price = 0;
+    var price = 0;
     getdata.map((ele, k) => {
       price = ele.price * ele.qnty + price;
     });
@@ -43,6 +44,46 @@ const Header = () => {
   useEffect(() => {
     total();
   }, [total]);
+
+  const initPayment = (data) => {
+    console.log("data checking", data);
+    const options = {
+      key: "rzp_test_xkRX7E1arP0hgl",
+      amount: price * 100,
+      currency: "INR",
+      //   name: book.name,
+      description: "Test Transaction",
+      //   image: book.img,
+      //   order_id: data.id,
+      handler: async (response) => {
+        try {
+          const verifyUrl = "http://localhost:8080/api/payment/verify";
+          const { data } = await axios.post(verifyUrl, response);
+          console.log(data);
+        } catch (error) {
+          console.log(error);
+        }
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    };
+    const rzp1 = new window.Razorpay(options);
+    rzp1.open();
+  };
+
+  const handlePayment = async (e) => {
+    e.preventDefault();
+    try {
+      const orderUrl = "http://localhost:8080/api/payment/orders";
+      const { data } = await axios.post(orderUrl, { amount: 400 });
+      console.log(data);
+      initPayment(data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  // payment end
 
   return (
     <>
@@ -142,6 +183,10 @@ const Header = () => {
                     );
                   })}
                   <p className="text-center">Total :₹ {price}</p>
+                  <button onClick={handlePayment} className="col-lg-12">
+                    {" "}
+                    Proceed to checkout{" "}
+                  </button>
                 </tbody>
               </Table>
             </div>
