@@ -24,7 +24,6 @@ const Header = () => {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -91,6 +90,8 @@ const Header = () => {
               <Table>
                 <thead>
                   <tr>
+                    <h1> this is headerjs page</h1>
+
                     <th>Photo</th>
                     <th>Restaurant Name</th>
                   </tr>
@@ -170,6 +171,8 @@ const Header = () => {
             </div>
           )}
         </Menu>
+
+        {/* <button>Here</button> */}
       </Navbar>
     </>
   );

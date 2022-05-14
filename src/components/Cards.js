@@ -20,6 +20,7 @@ const Cards = () => {
   return (
     <div className="container mt-3">
       <h2 className="text-center">Add to Cart Projects</h2>
+      <h1> this is card page</h1>
 
       <div className="row d-flex justify-content-center align-items-center">
         {data.map((element, id) => {
@@ -35,7 +36,6 @@ const Cards = () => {
                   style={{ height: "16rem" }}
                   className="mt-3"
                 />
-
                 <Card.Body>
                   <Card.Title>{element.rname}</Card.Title>
                   <Card.Text>Price : ₹ {element.price}</Card.Text>
