@@ -48,7 +48,7 @@ const Header = () => {
   const initPayment = (data) => {
     console.log("data checking", data);
     const options = {
-      key: "rzp_test_xkRX7E1arP0hgl",
+      key: "rzp_test_Yw92RYVlNUQyH3",
       amount: price * 100,
       currency: "INR",
       //   name: book.name,
