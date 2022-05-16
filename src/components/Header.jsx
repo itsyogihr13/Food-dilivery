@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Table from "react-bootstrap/esm/Table";
 import axios from "axios";
 import { DLT } from "../redux/actions/action";
+import "./style.css";
 
 const Header = () => {
   const [price, setPrice] = useState(0);
@@ -87,7 +88,7 @@ const Header = () => {
 
   return (
     <>
-      <Navbar bg="dark" variant="dark" style={{ height: "60px" }}>
+      <Navbar bg="dark" variant="dark" id="great">
         <Container>
           <NavLink to="/" className="text-decoration-none text-light mx-3">
             Add to Cart
