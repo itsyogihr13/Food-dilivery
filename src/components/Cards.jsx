@@ -21,16 +21,16 @@ const Cards = () => {
     if (e.target.value === "low") {
       // getdata.sort((first, second) => first.username - second.username);
       data.sort((a, b) => {
-        if (a.Price > b.Price) return 1;
+        if (a.price > b.price) return 1;
         else return -1;
       });
-      SetData([...data]);
+      setData([...data]);
     } else if (e.target.value === "high") {
       data.sort((a, b) => {
-        if (a.Price > b.Price) return -1;
+        if (a.price > b.price) return -1;
         else return 1;
       });
-      SetData([...data]);
+      setData([...data]);
     }
   }
 
@@ -38,6 +38,14 @@ const Cards = () => {
     <div className="container mt-3">
       <h2 className="text-center">Add to Cart Projects</h2>
       <h1> this is card page</h1>
+
+      <button value={"high"} onClick={handlesort}>
+        {" "}
+        HIGH{" "}
+      </button>
+      <button value={"low"} onClick={handlesort}>
+        LOW
+      </button>
 
       <div className="row d-flex justify-content-center align-items-center">
         {data.map((element, id) => {
@@ -70,7 +78,10 @@ const Cards = () => {
             </>
           );
         })}
+        <button>Prev</button>
+        <button>Next</button>
       </div>
+      {/* <button>hello</button> */}
     </div>
   );
 };
