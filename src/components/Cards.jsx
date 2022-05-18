@@ -81,7 +81,7 @@ const Cards = () => {
         <button>Prev</button>
         <button>Next</button>
       </div>
-      {/* <button>hello</button> */}
+      <button>hello</button>
     </div>
   );
 };
