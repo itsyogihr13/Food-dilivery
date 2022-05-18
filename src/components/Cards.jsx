@@ -40,6 +40,7 @@ const Cards = () => {
       <h2 className="text-center">Add to Cart Projects</h2>
       <h1> this is card page</h1>
 
+      <h2>SORT BY PRICE</h2>
       <button value={"high"} onClick={handlesort}>
         HIGH{" "}
       </button>
