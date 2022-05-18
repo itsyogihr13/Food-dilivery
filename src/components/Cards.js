@@ -17,6 +17,23 @@ const Cards = () => {
     dispatch(ADD(e));
   };
 
+  function handlesort(e) {
+    if (e.target.value === "low") {
+      // getdata.sort((first, second) => first.username - second.username);
+      data.sort((a, b) => {
+        if (a.Price > b.Price) return 1;
+        else return -1;
+      });
+      SetData([...data]);
+    } else if (e.target.value === "high") {
+      data.sort((a, b) => {
+        if (a.Price > b.Price) return -1;
+        else return 1;
+      });
+      SetData([...data]);
+    }
+  }
+
   return (
     <div className="container mt-3">
       <h2 className="text-center">Add to Cart Projects</h2>
