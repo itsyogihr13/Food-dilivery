@@ -40,7 +40,6 @@ const Cards = () => {
       <h1> this is card page</h1>
 
       <button value={"high"} onClick={handlesort}>
-        {" "}
         HIGH{" "}
       </button>
       <button value={"low"} onClick={handlesort}>
