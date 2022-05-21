@@ -49,7 +49,7 @@ const CardsDetails = () => {
   return (
     <>
       <div className="container mt-2">
-        <h2 className="text-center">Iteams Details Page</h2>
+        {/* <h2 className="text-center">Iteams Details Page</h2> */}
 
         <section className="container mt-3">
           <div className="iteamsdetails">
@@ -61,7 +61,7 @@ const CardsDetails = () => {
                   </div>
 
                   <div className="details">
-                    <h1> this is carddetail page</h1>
+                    {/* <h1> this is carddetail page</h1> */}
                     <Table>
                       <tr>
                         <td>
