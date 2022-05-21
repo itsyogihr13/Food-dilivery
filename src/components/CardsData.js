@@ -113,7 +113,7 @@ const Cardsdata = [
     delimg:
       "https://b.zmtcdn.com/data/o2_assets/0b07ef18234c6fdf9365ad1c274ae0631612687510.png?output-format=webp",
     somedata: "500 + order placed from here recently",
-    price: 100,
+    price: 60,
     rating: "3.2",
     arrimg:
       "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp",
@@ -121,14 +121,14 @@ const Cardsdata = [
   },
   {
     id: 9,
-    rname: "HL Frankie",
+    rname: "Cookies",
     imgdata:
-      "https://b.zmtcdn.com/data/pictures/7/19639627/94c0a4cf15c02d3982d154e2c5dd8cbb_o2_featured_v2.jpg",
+      "https://images.unsplash.com/photo-1607919966473-dd0aa8cf9085?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjA3fHxqdW5rJTIwZm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500",
     address: "Burger, Sandwich, Fast Food",
     delimg:
       "https://b.zmtcdn.com/data/o2_assets/0b07ef18234c6fdf9365ad1c274ae0631612687510.png?output-format=webp",
     somedata: "2525 + order placed from here recently",
-    price: 100,
+    price: 120,
     rating: "3.8",
     arrimg:
       "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp",
