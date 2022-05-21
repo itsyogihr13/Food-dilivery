@@ -53,16 +53,19 @@ const Cards = () => {
         <div>
           <input
             type="text"
-            placeholder="Enter your fav dish"
+            placeholder="Enter your fav dish.."
+            id="inputfield"
             onChange={(event) => setSearchdata(event.target.value)}
           />
-          <button>Search</button>
+
+          <button className="search">Search</button>
         </div>
       </div>
       <div className="row d-flex justify-content-center align-items-center">
         {data
           .filter((element) => {
-            if (searchdata == "") {
+            if (!searchdata) {
+              // alert("This item is not Available");/
               return element;
             } else if (
               element.rname.toLowerCase().includes(searchdata.toLowerCase())
@@ -107,5 +110,9 @@ const Cards = () => {
     </div>
   );
 };
+
+// {
+//   document.getElementById("inputfield").style.border = "#0a95ff";
+// }
 
 export default Cards;
