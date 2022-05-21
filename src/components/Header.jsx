@@ -132,7 +132,7 @@ const Header = () => {
               <Table>
                 <thead>
                   <tr>
-                    <h1> this is headerjs page</h1>
+                    {/* <h1> this is headerjs page</h1> */}
 
                     <th>Photo</th>
                     <th>Restaurant Name</th>
