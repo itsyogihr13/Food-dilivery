@@ -28,7 +28,6 @@ const CardsDetails = () => {
   // add data
 
   const send = (e) => {
-    // console.log(e);
     dispatch(ADD(e));
   };
 

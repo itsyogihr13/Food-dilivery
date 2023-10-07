@@ -4,7 +4,6 @@ import Container from "react-bootstrap/Container";
 import Badge from "@mui/material/Badge";
 import Nav from "react-bootstrap/Nav";
 import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Table from "react-bootstrap/esm/Table";
@@ -47,7 +46,6 @@ const Header = () => {
   }, [total]);
 
   const initPayment = (data) => {
-    console.log("data checking", data);
     const options = {
       key: "rzp_test_Yw92RYVlNUQyH3",
       amount: price * 100,
@@ -126,7 +124,7 @@ const Header = () => {
         >
           {getdata.length ? (
             <div
-              className="card_details"
+              className="card_details tara"
               style={{ width: "24rem", padding: 10 }}
             >
               <Table>
