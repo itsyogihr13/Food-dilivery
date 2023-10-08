@@ -7,20 +7,20 @@ import Menu from "@mui/material/Menu";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Table from "react-bootstrap/esm/Table";
-import axios from "axios";
+import Button from "react-bootstrap/Button";
 import { DLT } from "../redux/actions/action";
 import "./style.css";
 
 const Header = () => {
-  const [price, setPrice] = useState(0);
-  // console.log(price);
+  const [data, setData] = useState([]);
 
   const getdata = useSelector((state) => state.cartreducer.carts);
-  // console.log(getdata);
 
   const dispatch = useDispatch();
 
   const [anchorEl, setAnchorEl] = useState(null);
+  const [paymentStatus, setPaymentStatus] = useState(null);
+
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -33,57 +33,48 @@ const Header = () => {
     dispatch(DLT(id));
   };
 
-  const total = () => {
-    var price = 0;
-    getdata.map((ele, k) => {
-      price = ele.price * ele.qnty + price;
-    });
-    setPrice(price);
+  const loadScript = (src, callback) => {
+    const script = document.createElement("script");
+    script.src = src;
+    script.async = true;
+    script.onload = callback;
+    document.head.appendChild(script);
+  };
+  const handlePayment = async () => {
+    const options = {
+      key: "rzp_test_N7JAloi8EO00qI",
+      amount: data[0].price * 100,
+      currency: "INR",
+      name: data[0].name,
+      description: "Payment for your service",
+      handler: async (response) => {
+        setPaymentStatus("Payment successful: " + response.razorpay_payment_id);
+      },
+    };
+
+    const rzp = new window.Razorpay(options);
+    rzp.open();
   };
 
   useEffect(() => {
-    total();
-  }, [total]);
+    if (getdata.length) {
+      const newData = getdata.map((el) => ({
+        price: el.price * el.qnty,
+        name: el.rname,
+      }));
 
-  const initPayment = (data) => {
-    const options = {
-      key: "rzp_test_Yw92RYVlNUQyH3",
-      amount: price * 100,
-      currency: "INR",
-      //   name: book.name,
-      description: "Test Transaction",
-      //   image: book.img,
-      //   order_id: data.id,
-      handler: async (response) => {
-        try {
-          const verifyUrl = "http://localhost:8080/api/payment/verify";
-          const { data } = await axios.post(verifyUrl, response);
-          console.log(data);
-        } catch (error) {
-          console.log(error);
-        }
-      },
-      theme: {
-        color: "#3399cc",
-      },
-    };
-    const rzp1 = new window.Razorpay(options);
-    rzp1.open();
-  };
-
-  const handlePayment = async (e) => {
-    e.preventDefault();
-    try {
-      const orderUrl = "http://localhost:8080/api/payment/orders";
-      const { data } = await axios.post(orderUrl, { amount: 400 });
-      console.log(data);
-      initPayment(data.data);
-    } catch (error) {
-      console.log(error);
+      setData(newData);
     }
-  };
-  // payment end
+  }, [getdata]);
+  useEffect(() => {
+    loadScript("https://checkout.razorpay.com/v1/checkout.js", () => {});
+  }, []);
 
+  useEffect(() => {
+    if (paymentStatus) {
+      getdata([]);
+    }
+  }, [paymentStatus]);
   return (
     <>
       <Navbar bg="dark" variant="dark" id="great">
@@ -181,11 +172,16 @@ const Header = () => {
                       </>
                     );
                   })}
-                  <p className="text-center">Total :₹ {price}</p>
-                  <button onClick={handlePayment} className="col-lg-12">
-                    {" "}
-                    Proceed to checkout{" "}
-                  </button>
+                  <p className="text-center">Total :₹ {data[0]?.price}</p>
+                  <Button
+                    style={{
+                      backgroundColor: "black",
+                    }}
+                    onClick={handlePayment}
+                    className="btn proceed"
+                  >
+                    Proceed to checkout
+                  </Button>
                 </tbody>
               </Table>
             </div>
@@ -215,8 +211,6 @@ const Header = () => {
             </div>
           )}
         </Menu>
-
-        {/* <button>Here</button> */}
       </Navbar>
     </>
   );

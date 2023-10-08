@@ -39,17 +39,16 @@ const Cards = () => {
   return (
     <div className="container mt-3">
       <h2 className="text-center">Add to Cart Projects</h2>
-      {/* <h1> this is card page</h1> */}
+      <h2 className="sort">SORT BY PRICE</h2>
       <div id="bellowNav">
         <div>
-          <h2>SORT BY PRICE</h2>
-          <button className="btn 4" value={"high"} onClick={handlesort}>
-            HIGH{" "}
+          <button className="btn serachbtn" value={"high"} onClick={handlesort}>
+            HIGH
           </button>
-          <button className="btn" value={"low"} onClick={handlesort}>
+          <button className="btn serachbtn" value={"low"} onClick={handlesort}>
             LOW
           </button>
-        </div>{" "}
+        </div>
         <div>
           <input
             type="text"
@@ -57,8 +56,7 @@ const Cards = () => {
             id="inputfield"
             onChange={(event) => setSearchdata(event.target.value)}
           />
-
-          <button className="search">Search</button>
+          <Button className=" col-lg-12 search searchbtn">search</Button>
         </div>
       </div>
       <div className="row d-flex justify-content-center align-items-center">
@@ -93,7 +91,7 @@ const Cards = () => {
                       <Button
                         variant="primary"
                         onClick={() => send(element)}
-                        className="col-lg-12"
+                        className="col-lg-12 "
                       >
                         Add to Cart
                       </Button>

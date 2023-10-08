@@ -47,67 +47,69 @@ const CardsDetails = () => {
 
   return (
     <>
-      <div className="container mt-2">
-        {/* <h2 className="text-center">Iteams Details Page</h2> */}
-
-        <section className="container mt-3">
+      <div
+        style={{
+          padding: "1rem",
+          marginTop: "100px",
+        }}
+        className="container-card mt-10 "
+      >
+        <section className="container">
           <div className="iteamsdetails">
             {data.map((ele) => {
               return (
                 <>
+                  <br />
                   <div className="items_img">
-                    <img src={ele.imgdata} alt="" />
+                    <img className="food-img" src={ele.imgdata} alt="" />
+                    <div
+                      className=" quantity-div d-flex justify-content-between align-items-center"
+                      style={{
+                        width: 100,
+                        cursor: "pointer",
+                        background: "#ddd",
+                        color: "#111",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <span
+                        style={{ fontSize: 24, paddingLeft: "1rem" }}
+                        onClick={
+                          ele.qnty <= 1 ? () => dlt(ele.id) : () => remove(ele)
+                        }
+                      >
+                        -
+                      </span>
+                      <span style={{ fontSize: 22 }}>{ele.qnty}</span>
+                      <span
+                        style={{ fontSize: 24, paddingRight: "1rem" }}
+                        onClick={() => send(ele)}
+                      >
+                        +
+                      </span>
+                    </div>
                   </div>
-
                   <div className="details">
-                    {/* <h1> this is carddetail page</h1> */}
+                    <h4
+                      className="restroname"
+                      style={{
+                        marginBottom: "10px",
+                      }}
+                    >
+                      <strong>Restaurant</strong> : {ele.rname}
+                    </h4>
                     <Table>
                       <tr>
                         <td>
                           <p>
-                            {" "}
-                            <strong>Restaurant</strong> : {ele.rname}
-                          </p>
-                          <p>
-                            {" "}
                             <strong>Price</strong> : ₹{ele.price}
                           </p>
                           <p>
-                            {" "}
                             <strong>Dishes</strong> : {ele.address}
                           </p>
                           <p>
-                            {" "}
                             <strong>Total</strong> :₹ {ele.price * ele.qnty}
                           </p>
-
-                          <div
-                            className="mt-5 d-flex justify-content-between align-items-center"
-                            style={{
-                              width: 100,
-                              cursor: "pointer",
-                              background: "#ddd",
-                              color: "#111",
-                            }}
-                          >
-                            <span
-                              style={{ fontSize: 24 }}
-                              onClick={
-                                ele.qnty <= 1
-                                  ? () => dlt(ele.id)
-                                  : () => remove(ele)
-                              }
-                            >
-                              -
-                            </span>
-                            <span style={{ fontSize: 22 }}>{ele.qnty}</span>
-                            <span
-                              style={{ fontSize: 24 }}
-                              onClick={() => send(ele)}
-                            >
-                              +
-                            </span>
-                          </div>
                         </td>
                         <td>
                           <p>
@@ -138,7 +140,7 @@ const CardsDetails = () => {
                                   fontSize: 20,
                                   cursor: "pointer",
                                 }}
-                              ></i>{" "}
+                              ></i>
                             </span>
                           </p>
                         </td>
